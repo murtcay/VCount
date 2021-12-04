@@ -7,13 +7,19 @@ const PORT = process.env.PORT || 3000;
 // database
 const connectDB = require('./db/connection');
 
-// routes
-const countryRouter = require('./routes/countryRoutes');
+// controllers
+const { 
+  getAllCountries, 
+  salesReprestative, 
+  getOptimal
+} = require('./controllers/countryController');
 
 // middleware
 app.use(express.json());
 
-app.use('/', countryRouter);
+app.get('/countries', getAllCountries);
+app.get('/salesrep', salesReprestative);
+app.get('/optimal', getOptimal);
 
 const start = async () => {
   try {
