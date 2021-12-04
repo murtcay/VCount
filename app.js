@@ -15,11 +15,15 @@ const {
 } = require('./controllers/countryController');
 
 // middleware
+const notFoundMiddleware = require('./middleware/not-found');
+
 app.use(express.json());
 
 app.get('/countries', getAllCountries);
 app.get('/salesrep', salesReprestative);
 app.get('/optimal', getOptimal);
+
+app.use(notFoundMiddleware);
 
 const start = async () => {
   try {
