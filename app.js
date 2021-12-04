@@ -13,7 +13,7 @@ const countryRouter = require('./routes/countryRoutes');
 // middleware
 app.use(express.json());
 
-app.use('/countries', countryRouter);
+app.use('/', countryRouter);
 
 const start = async () => {
   try {
