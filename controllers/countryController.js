@@ -19,6 +19,10 @@ const getAllCountries = async (req, res) => {
 
 const salesReprestative = async (req, res) => {
   try {
+    // This route is only accessible when URL is /salesrep or /salesrep/
+    if(req.url !== '/salesrep' && req.url !== '/salesrep/'){
+      throw new Error('Route does not exist.');
+    }
     
     const { host } = req.headers;
 
@@ -56,7 +60,11 @@ const salesReprestative = async (req, res) => {
 
 const getOptimal = async (req, res) => {
   try {
-    
+    // This route is only accessible when URL is /optimal or /optimal/
+    if(req.url !== '/optimal' && req.url !== '/optimal/'){
+      throw new Error('Route does not exist.');
+    }
+
     const { host } = req.headers;
 
     const countryList = await sendCounrtyListRequest(host);
